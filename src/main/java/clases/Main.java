@@ -24,6 +24,7 @@ public class Main {
 				break;
 			case 2:
 				//TODO Lista de Libros
+				listar(catalogo);
 				break;
 			default:
 				break;
@@ -114,5 +115,12 @@ public class Main {
     	Scanner teclado = new Scanner(System.in);
         opcion=teclado.nextLine();
     	return opcion;
+    }
+    
+    private static void listar(ArrayList<Libro> catalogo) {
+    	
+    	for (int i = 0; i < catalogo.size(); i++) {
+			System.out.println(catalogo.get(i));
+		}
     }
 }
