@@ -96,7 +96,6 @@ public class Main {
     }
     
     private static Libro procesaEntrada(String entrada) {
-    	Libro libro = null;
     	
     	String [] datos = entrada.split(":");
     	
@@ -105,7 +104,8 @@ public class Main {
     	Genero genero = Genero.getGenero(datos[2]);
     	String autor = datos[3];
     	Integer paginas = Integer.parseInt(datos[4]);
-    	
+
+    	Libro libro = new Libro(titulo, isbn, genero, autor, paginas);
     	
     	return libro;
     }
