@@ -67,5 +67,8 @@ public class Libro {
 		this.paginas = paginas;
 	}
 	
-
+	public String toString() {
+		return "El libro es: " + titulo + ", con isbn: " + isbn + ", con genero:  " + genero + ", autor: " + autor + " y páginas: " + paginas;
+		
+	}
 }
