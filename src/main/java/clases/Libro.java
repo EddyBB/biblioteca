@@ -1,6 +1,6 @@
 package clases;
 
-public class Libro {
+public class Libro implements Comparable{
 	
 	private String titulo;
 	private String isbn;
@@ -67,8 +67,21 @@ public class Libro {
 		this.paginas = paginas;
 	}
 	
+	@Override
 	public String toString() {
 		return "El libro es: " + titulo + ", con isbn: " + isbn + ", con genero:  " + genero + ", autor: " + autor + " y páginas: " + paginas;
+		
+	}
+	
+	// orden alfabetico de los libros
+	public int compareTo(Object a) {
+		return paginas;
+		
+	}
+	
+	@Override
+	public boolean equals(Object a) {
+		return false;
 		
 	}
 }
