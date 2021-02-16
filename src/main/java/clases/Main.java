@@ -26,6 +26,10 @@ public class Main {
 				//TODO Lista de Libros
 				listar(catalogo);
 				break;
+				
+			case 3:
+				//TODO Baja de libro
+				baja(catalogo);
 			default:
 				break;
 			}
@@ -44,7 +48,7 @@ public class Main {
     		System.out.println("5. Ordenacion de Libros");
     		System.out.println("Introduce la opcion:");
     	
-    		opcion = leerOpcion(2);
+    		opcion = leerOpcion(5);
     		
     	}while(opcion <=0);
     	
@@ -118,9 +122,28 @@ public class Main {
     }
     
     private static void listar(ArrayList<Libro> catalogo) {
+    	int n = 0;
+    	for (int i = 0; i < catalogo.size(); i++) {
+    		n = n + 1;
+    		System.out.println("Nº: " + n);
+			System.out.println(catalogo.get(i)+"\n");
+		}
+    }
+    
+    private static void baja(ArrayList<Libro> catalogo) {
+    	int n = 0;
+    	int numlibro = 0;
+    	Scanner teclado = new Scanner(System.in);
+    	
+    	System.out.println("¿Qué número de libro quieres borrar?");
+    	numlibro = teclado.nextInt();
     	
     	for (int i = 0; i < catalogo.size(); i++) {
-			System.out.println(catalogo.get(i));
-		}
+    		n = n + 1;
+    		if(numlibro == n) {
+        		catalogo.clear();
+        	}
+    	} 	
+    	//teclado.close();
     }
 }
