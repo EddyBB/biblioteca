@@ -141,7 +141,7 @@ public class Main {
     	for (int i = 0; i < catalogo.size(); i++) {
     		n = n + 1;
     		if(numlibro == n) {
-        		catalogo.clear();
+        		catalogo.remove(i);
         	}
     	} 	
     	//teclado.close();
