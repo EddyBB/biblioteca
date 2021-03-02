@@ -84,4 +84,18 @@ public class Libro implements Comparable{
 		return false;
 		
 	}
+
+	public static boolean comprobarBaja(int numlibro, int size) {
+		// TODO Auto-generated method stub
+        if (numlibro>=0 && numlibro <= (size+1)) 
+        {
+            System.out.println(" >>> Libro eliminado <<<\n");
+            return true;
+        }
+        else
+        {
+            System.out.println(" >>> No se ha encontrado el número del libro <<<\n");
+        }
+		return false;
+	}
 }

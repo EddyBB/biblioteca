@@ -122,7 +122,7 @@ public class Main {
     }
     
     private static void listar(ArrayList<Libro> catalogo) {
-    	int n = 0;
+    	int n = -1;
     	for (int i = 0; i < catalogo.size(); i++) {
     		n = n + 1;
     		System.out.println("Nº: " + n);
@@ -130,20 +130,41 @@ public class Main {
 		}
     }
     
-    private static void baja(ArrayList<Libro> catalogo) {
-    	int n = 0;
+    private static ArrayList<Libro> baja(ArrayList<Libro> catalogo) {
+    	
     	int numlibro = 0;
     	Scanner teclado = new Scanner(System.in);
     	
     	System.out.println("¿Qué número de libro quieres borrar?");
     	numlibro = teclado.nextInt();
     	
-    	for (int i = 0; i < catalogo.size(); i++) {
+    	if(Libro.comprobarBaja(numlibro, catalogo.size())) {
+    	    catalogo.remove(numlibro);
+    	}
+		return catalogo;
+    	
+    	
+    	
+    	/*for (int i = 0; i < catalogo.size(); i++) {
     		n = n + 1;
     		if(numlibro == n) {
         		catalogo.remove(i);
         	}
-    	} 	
+    	}*/	
     	//teclado.close();
     }
+    
+    /*public boolean comprobarBaja(int numlibro, int size)
+    {
+        if (numlibro>=0 && numlibro <= (size-1)) 
+        {
+            System.out.println(" >>> Registro eliminado <<<\n");
+            return true;
+        }
+        else
+        {
+            System.out.println(" >>> No se ha encontrado registro <<<\n");
+        }
+        return false;
+    }*/
 }
