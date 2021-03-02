@@ -30,6 +30,12 @@ public class Main {
 			case 3:
 				//TODO Baja de libro
 				baja(catalogo);
+				break;
+				
+			case 4:
+				//TODO Buscar libro
+				buscarLibro(catalogo);
+				break;
 			default:
 				break;
 			}
@@ -142,29 +148,18 @@ public class Main {
     	    catalogo.remove(numlibro);
     	}
 		return catalogo;
-    	
-    	
-    	
-    	/*for (int i = 0; i < catalogo.size(); i++) {
-    		n = n + 1;
-    		if(numlibro == n) {
-        		catalogo.remove(i);
-        	}
-    	}*/	
-    	//teclado.close();
     }
     
-    /*public boolean comprobarBaja(int numlibro, int size)
-    {
-        if (numlibro>=0 && numlibro <= (size-1)) 
-        {
-            System.out.println(" >>> Registro eliminado <<<\n");
-            return true;
-        }
-        else
-        {
-            System.out.println(" >>> No se ha encontrado registro <<<\n");
-        }
-        return false;
-    }*/
+    private static ArrayList<Libro> buscarLibro(ArrayList<Libro> catalogo) {
+    	String buscar = "";
+    	Scanner teclado = new Scanner(System.in);
+    	
+    	System.out.println("¿Qué isbn quieres buscar?");
+    	buscar = teclado.next();
+    	
+    	
+    	
+		return catalogo;
+    	
+    }
 }
