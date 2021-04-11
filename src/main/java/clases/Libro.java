@@ -67,7 +67,7 @@ public class Libro implements Comparable{
 		this.paginas = paginas;
 	}
 	
-	@Override
+	//@Override
 	public String toString() {
 		return "El libro es: " + titulo + ", con isbn: " + isbn + ", con genero:  " + genero + ", autor: " + autor + " y páginas: " + paginas;
 		

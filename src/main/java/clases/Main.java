@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Spliterator;
 
 public class Main {
     
@@ -83,6 +84,7 @@ public class Main {
     	Libro libro = procesaEntrada(datosLibro);
     	//Crear el libro con los datos de la entrada
     	catalogo.add(libro);
+    	
     	//Meter el libro en el catalogo
     }
     
@@ -128,7 +130,7 @@ public class Main {
     }
     
     private static void listar(ArrayList<Libro> catalogo) {
-    	int n = -1;
+    	int n = 0;
     	for (int i = 0; i < catalogo.size(); i++) {
     		n = n + 1;
     		System.out.println("Nº: " + n);
@@ -151,16 +153,32 @@ public class Main {
     }
     
     private static ArrayList<Libro> buscarLibro(ArrayList<Libro> catalogo) {
-    	String buscar = "";
+    	
     	Scanner teclado = new Scanner(System.in);
     	
-    	System.out.println("¿Qué isbn quieres buscar?");
-    	buscar = teclado.next();
+    	String isb;
+    	String librito = null;
     	
+    	System.out.println("¿Qué ISBN quieres buscar?");
+    	isb = teclado.next();
     	
+    	for (int i = 0; i < catalogo.size(); i++) {
+ 
+    		if(catalogo.get(i).getIsbn().equalsIgnoreCase(isb)) {
+    			
+    			System.out.println("Libro encontrado");
+    			System.out.println(catalogo.get(i));
+    			librito = catalogo.get(i).toString();
+    			break;
+    		}
+		}
+    	if(librito == null) {
+    		System.out.println("Lo sentimos no existe ningún libro con ese ISBN");
+    	}
     	
     	
 		return catalogo;
     	
     }
+    
 }
