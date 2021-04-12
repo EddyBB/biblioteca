@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Spliterator;
 
 public class Main {
     
@@ -66,9 +65,10 @@ public class Main {
     	int opcion = -1;
     	try {
     		Scanner teclado = new Scanner(System.in);
-    		opcion=teclado.nextInt();
+    		opcion = teclado.nextInt();
     		if(opcion>max)
     			opcion=-1;
+    		
     	}catch (InputMismatchException e) {
 			System.out.println("Opción incorrecta");
 		}
@@ -126,6 +126,7 @@ public class Main {
     	String opcion = null;
     	Scanner teclado = new Scanner(System.in);
         opcion=teclado.nextLine();
+        
     	return opcion;
     }
     
@@ -144,11 +145,12 @@ public class Main {
     	Scanner teclado = new Scanner(System.in);
     	
     	System.out.println("¿Qué número de libro quieres borrar?");
-    	numlibro = teclado.nextInt();
+    	numlibro = teclado.nextInt() - 1;
     	
     	if(Libro.comprobarBaja(numlibro, catalogo.size())) {
     	    catalogo.remove(numlibro);
     	}
+    	
 		return catalogo;
     }
     
