@@ -1,6 +1,8 @@
 package clases;
 
-public class Libro implements Comparable{
+import java.util.Comparator;
+
+public class Libro implements Comparable<Libro>, Comparator<Libro>{
 	
 	private String titulo;
 	private String isbn;
@@ -74,14 +76,30 @@ public class Libro implements Comparable{
 	}
 	
 	// orden alfabetico de los libros
-	public int compareTo(Object a) {
-		return paginas;
-		
+	public int compareTo(Libro a) {
+		return this.titulo.compareTo(a.titulo);
+	}
+	
+	public int compare(Libro a, Libro b) {
+		return a.getPaginas() - b.getPaginas();
 	}
 	
 	@Override
 	public boolean equals(Object a) {
-		return false;
+		
+		boolean retorno = false;
+		
+		Libro libro = (Libro) a;
+		
+		if(this == a) {
+			retorno = true;
+		} else {
+			if (this.isbn.equals(libro.isbn)) {
+				retorno = true;
+			}
+		}
+		
+		return retorno;
 		
 	}
 

@@ -4,9 +4,11 @@
 package clases;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Collections;
 
 public class Main {
     
@@ -36,6 +38,10 @@ public class Main {
 				//TODO Buscar libro
 				buscarLibro(catalogo);
 				break;
+				
+			case 5:
+				//TODO Ordenar libro
+				ordenaLibro(catalogo);
 			default:
 				break;
 			}
@@ -156,31 +162,57 @@ public class Main {
     
     private static ArrayList<Libro> buscarLibro(ArrayList<Libro> catalogo) {
     	
-    	Scanner teclado = new Scanner(System.in);
-    	
-    	String isb;
+    	String isb = "";
     	String librito = null;
     	
+    	Scanner teclado = new Scanner(System.in);
+
     	System.out.println("¿Qué ISBN quieres buscar?");
     	isb = teclado.next();
     	
-    	for (int i = 0; i < catalogo.size(); i++) {
- 
-    		if(catalogo.get(i).getIsbn().equalsIgnoreCase(isb)) {
-    			
-    			System.out.println("Libro encontrado");
-    			System.out.println(catalogo.get(i));
-    			librito = catalogo.get(i).toString();
-    			break;
-    		}
+    	Libro libro = new Libro();
+    	libro.setIsbn(isb);
+    	
+    	int posicion = catalogo.indexOf(libro);
+    	
+    	
+    	if (posicion < 0) {
+			System.out.println("Libro no encontrado");
+		} else {
+			System.out.println("Libro encontrado");
+			System.out.println(catalogo.get(posicion));
 		}
-    	if(librito == null) {
-    		System.out.println("Lo sentimos no existe ningún libro con ese ISBN");
-    	}
     	
     	
 		return catalogo;
     	
+    }
+    
+    private static void ordenaLibro(ArrayList<Libro> catalogo) {
+    	
+    	int opcion = 0;
+    	
+    	Scanner teclado = new Scanner(System.in);
+    	
+    	System.out.println("¿Desea ordenar por título o por Nº de páginas?");
+    	System.out.println("1. Título");
+    	System.out.println("2. Nº de páginas");
+    	opcion = teclado.nextInt();
+    	
+    	switch(opcion) {
+    		case 1:
+    			Collections.sort(catalogo);
+    			System.out.println("Catalogo ordenado por título\n");
+    			listar(catalogo);
+    			break;
+    		case 2:
+    			Collections.sort(catalogo, new Libro());
+    			System.out.println("Catalogo ordenado por Nº de páginas\n");
+    			listar(catalogo);
+    			break;
+    		default:
+    			break;
+    	}
     }
     
 }
