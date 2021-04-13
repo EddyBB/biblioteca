@@ -235,7 +235,7 @@ public class Main {
     	}
     }
     
-    public static void salvarFichero(ArrayList<Libro> catalogo) {
+    private static void salvarFichero(ArrayList<Libro> catalogo) {
     	
     	String nombretxt = "";
     	
@@ -260,7 +260,7 @@ public class Main {
 		}
     }
     
-    public static void cargarFichero() {
+    private static void cargarFichero() {
     	
     	
     	String nombretxt = "";
