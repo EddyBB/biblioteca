@@ -3,6 +3,8 @@
  */
 package clases;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.InputMismatchException;
@@ -42,6 +44,22 @@ public class Main {
 			case 5:
 				//TODO Ordenar libro
 				ordenaLibro(catalogo);
+				break;
+				
+			case 6:
+				//TODO Salvar a Fichero
+				salvarFichero(catalogo);
+				break;
+				
+			case 7:
+				//TODO Cargar Fichero
+				cargarFichero();
+				break;
+				
+			case 8:
+				//TODO Limpiar Catalogo
+				limpiarCatalogo(catalogo);
+				break;
 			default:
 				break;
 			}
@@ -58,9 +76,12 @@ public class Main {
     		System.out.println("3. Baja de Libros");
     		System.out.println("4. Búsqueda de Libros");
     		System.out.println("5. Ordenacion de Libros");
+    		System.out.println("6. Guardar Libros en fichero .txt");
+    		System.out.println("7. Cargar fichero .txt");
+    		System.out.println("8. Limpiar catalogo");
     		System.out.println("Introduce la opcion:");
     	
-    		opcion = leerOpcion(5);
+    		opcion = leerOpcion(8);
     		
     	}while(opcion <=0);
     	
@@ -163,7 +184,6 @@ public class Main {
     private static ArrayList<Libro> buscarLibro(ArrayList<Libro> catalogo) {
     	
     	String isb = "";
-    	String librito = null;
     	
     	Scanner teclado = new Scanner(System.in);
 
@@ -215,4 +235,75 @@ public class Main {
     	}
     }
     
+    public static void salvarFichero(ArrayList<Libro> catalogo) {
+    	
+    	String nombretxt = "";
+    	
+    	Scanner teclado = new Scanner(System.in);
+    	
+    	System.out.println("Nombre a guardar el fichero con extension .txt");
+    	nombretxt = teclado.next();
+    	
+		try {
+			
+			FileWriter escribir = new FileWriter("/home/alumno/Escritorio/librosGuardados/" + nombretxt);
+
+			// Escribimos linea a linea en el fichero
+			for (Libro libro : catalogo) {
+				escribir.write(libro.toStringFichero() + "\n");
+			}
+			System.out.println("El catalogo se ha guardado en el fichero correctamente\n");
+			escribir.close();
+
+		} catch (Exception ex) {
+			System.out.println("Error: el fichero no se ha guardado correctamente " + ex.getMessage());
+		}
+    }
+    
+    public static void cargarFichero() {
+    	
+    	
+    	String nombretxt = "";
+    	
+    	Scanner teclado = new Scanner(System.in);
+    	
+    	System.out.println("Nombre del fichero a cargar con extension .txt");
+    	nombretxt = teclado.next();
+    	
+    	// Fichero del que queremos leer
+    	File fichero = new File("/home/alumno/Escritorio/librosGuardados/" + nombretxt );
+    	Scanner s = null;
+
+    	try {
+    		// Leemos el contenido del fichero
+    		System.out.println("... Leyendo el contenido del fichero ...\n");
+    		s = new Scanner(fichero);
+
+    		// Leemos linea a linea el fichero
+    		while (s.hasNextLine()) {
+    			String linea = s.nextLine(); 	// Guardamos la linea en un String
+    			System.out.println(linea);      // Imprimimos la linea
+    		}
+    		System.out.println();
+
+    	} catch (Exception ex) {
+    		System.out.println("Mensaje: " + ex.getMessage());
+    	} finally {
+    		// Cerramos el fichero tanto si la lectura ha sido correcta o no
+    		try {
+    			if (s != null)
+    				s.close();
+    		} catch (Exception ex2) {
+    			System.out.println("Mensaje 2: " + ex2.getMessage());
+    		}
+    	}
+    }
+    
+    private static ArrayList<Libro> limpiarCatalogo(ArrayList<Libro> catalogo) {
+    	
+    	System.out.println("Catalogo vacío\n");
+    	catalogo.clear();
+    	
+    	return catalogo;
+    }
 }

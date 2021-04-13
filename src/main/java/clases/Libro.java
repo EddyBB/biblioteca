@@ -71,7 +71,12 @@ public class Libro implements Comparable<Libro>, Comparator<Libro>{
 	
 	//@Override
 	public String toString() {
-		return "El libro es: " + titulo + ", con isbn: " + isbn + ", con genero:  " + genero + ", autor: " + autor + " y páginas: " + paginas;
+		return titulo + ":" + isbn + ":" + genero + ":" + autor + ":" + paginas;
+		
+	}
+	
+	public String toStringFichero() {
+		return titulo + "," + isbn + "," + genero + "," + autor + "," + paginas;
 		
 	}
 	
